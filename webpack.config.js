@@ -7,6 +7,9 @@ module.exports = {
         path:path.resolve(__dirname,"dist")
     },
     devtool:'source-map' ,
+    resolve: {
+        modules:[path.resolve(__dirname,"source"),path.resolve(__dirname,"node_modules")]
+    },
     plugins:[
         new htmlWebpackPlugin({
             template:path.resolve(__dirname,"public/index.html")

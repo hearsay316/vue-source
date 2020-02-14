@@ -1,1 +1,3 @@
-console.log(11)
+import Vue from "vue"
+
+console.log(Vue)
