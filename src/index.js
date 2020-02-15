@@ -1,3 +1,9 @@
 import Vue from "vue"
 
-console.log(Vue)
+new Vue({
+    el:"#app",
+    data:{
+        a:1,
+        B:2
+    }
+})
