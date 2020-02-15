@@ -7,6 +7,7 @@ Vue.prototype._init = function(options){
     let vm = this;
     vm.$options = options;
     // Mvvm 原理
+    initState(vm)
 
 }
 
