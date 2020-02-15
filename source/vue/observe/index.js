@@ -13,16 +13,29 @@ export function initState(vm) {
     initWatch(vm); // 初始化 观察者
   }
 }
-function observe(data) {
+export function observe(data) {
     if(typeof data !=="object"||data==null){
         return
     }
     return new Observer(data)
 }
+function proxy(vm,source,key) { //代理数据 vm.XX = vm._data.XX
+    Object.defineProperty(vm,key,{
+        get(){
+           return vm[source][key]
+        },
+        set(newVlaue){
+            vm[source][key] = newVlaue
+        }
+    })
+}
 function initData(vm) {
   // 讲用户插入的数据通过object.defineProperty重新定义
   let data = vm.$options.data;
   data = vm._data =  typeof data === "function" ? data.call(vm) : data || {};
+    for (let key in data) {
+        proxy(vm,"_data",key)
+    }
   observe(vm._data)
 }
 function initComputed(opts) {}

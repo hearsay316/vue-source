@@ -1,9 +1,10 @@
 import Vue from "vue"
 
-new Vue({
+let vm = new Vue({
     el:"#app",
     data:{
         a:1,
         B:2
     }
 })
+console.log(vm)
