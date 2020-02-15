@@ -1,4 +1,6 @@
 import { observe } from "./index";
+import {arrayMethods} from "./arrary";
+
 
 export function defineReactive(data, key, value) {
   // 如果value依然是对象就需要递归
@@ -20,7 +22,7 @@ export default class Observer {
   constructor(data) {
     //data 就是我们刚刚定义的vm._data
     console.log("observe", data);
-    this.walk(data);
+      Array.isArray(data)?data.__proto__ = arrayMethods:this.walk(data);
   }
   walk(data) {
     let keys = Object.keys(data);
