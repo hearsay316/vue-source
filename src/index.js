@@ -12,3 +12,4 @@ let vm = new Vue({
 });
 window.vm = vm;
 console.log((vm.D[0].a = 2));
+console.log(2222);
