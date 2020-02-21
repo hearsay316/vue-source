@@ -25,8 +25,8 @@ function proxy(vm, source, key) {
     get() {
       return vm[source][key];
     },
-    set(newVlaue) {
-      vm[source][key] = newVlaue;
+    set(newValue) {
+      vm[source][key] = newValue;
     }
   });
 }
