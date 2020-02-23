@@ -1,6 +1,6 @@
 import { initState } from "./observe/index.js";
 import Watcher from "./observe/watcher";
-import {compiler} from "./util";
+import { compiler } from "./util";
 
 function Vue(options) {
   this._init(options);
@@ -36,6 +36,7 @@ Vue.prototype.$mount = function() {
     vm._update(); // 组件更新
   };
   new Watcher(vm, updateComponent); //渲染watcher
+  //  只要他更改了 ,就要重新渲染组件
 };
 
 Vue.prototype._update = function() {

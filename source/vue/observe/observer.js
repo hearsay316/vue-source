@@ -1,18 +1,24 @@
 import { observe } from "./index";
 import { arrayMethods, observerArray } from "./arrary";
+import Dep from "./dep";
 
 export function defineReactive(data, key, value) {
   // 如果value依然是对象就需要递归
   observe(value);
+  let dep = Dep(); //dep里可以收集依赖 收集的依赖是watcher
   Object.defineProperty(data, key, {
     get() {
       console.log("获取数据");
+      if (Dep.target) {
+        dep.addSup(Dep.target);
+      }
       return value;
     },
     set(newValue) {
       console.log("设置数据");
       if (newValue === value) return;
       value = newValue;
+      dep.notify();
     }
   });
 }

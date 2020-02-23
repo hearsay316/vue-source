@@ -13,7 +13,6 @@ const util = {
   compilerText(node, vm) {
     // 编译文本  替换大括号{{}}
     node.textContent = node.textContent.replace(defaultRE, function(...args) {
-      console.log(args, 66666);
       return util.getValue(vm, args[1]);
     });
   }
